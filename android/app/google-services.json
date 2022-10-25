@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "984002542282",
+    "project_id": "social-app-8905d",
+    "storage_bucket": "social-app-8905d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984002542282:android:bcdab3fda67a15e8e05233",
+        "android_client_info": {
+          "package_name": "com.example.firebase_chatting_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984002542282-q4tbp5eve8307f9c9d8nfu0rdarijt26.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByL3_NpnOgUZC9Kqfl4zlo-iA-U0o63S0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984002542282-q4tbp5eve8307f9c9d8nfu0rdarijt26.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984002542282:android:70ad23546b49a50de05233",
+        "android_client_info": {
+          "package_name": "com.prantokm.socialapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984002542282-q4tbp5eve8307f9c9d8nfu0rdarijt26.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByL3_NpnOgUZC9Kqfl4zlo-iA-U0o63S0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984002542282-q4tbp5eve8307f9c9d8nfu0rdarijt26.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
