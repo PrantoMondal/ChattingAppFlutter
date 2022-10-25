@@ -1,4 +1,5 @@
 import 'package:firebase_chatting_app/auth/auth_service.dart';
+import 'package:firebase_chatting_app/pages/user_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 
@@ -17,11 +18,18 @@ class _LauncherPageState extends State<LauncherPage> {
        if(AuthService.user == null){
          Navigator.pushReplacementNamed(context, LoginPage.routeName);
        }
+       else{
+         Navigator.pushReplacementNamed(context, UserProfilePage.routeName);
+       }
     });
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
   }
 }
