@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-  static const String routeName = '/loginPage';
+  static const String routeName = '/login';
+
   const LoginPage({Key? key}) : super(key: key);
 
   @override
@@ -9,6 +10,19 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
+  bool isLogin = true, isObscureText = true;
+  final formKey = GlobalKey<FormState>();
+  String errMsg = '';
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,13 +34,14 @@ class _LoginPageState extends State<LoginPage> {
             shrinkWrap: true,
             children: [
               TextFormField(
-                controller: emailcontroller,
+                controller: emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
-                  hintText: 'Email Address',
-                  prefixIcon: Icon(Icons.email),
-                  filled: true
-                ),
+                    hintText: 'Email Address',
+                    prefixIcon: Icon(Icons.email),
+                    filled: true),
+
+
               )
             ],
           ),
