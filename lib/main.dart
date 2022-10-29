@@ -1,3 +1,7 @@
+import 'package:firebase_chatting_app/pages/chat_room_page.dart';
+import 'package:firebase_chatting_app/pages/launcher_page.dart';
+import 'package:firebase_chatting_app/pages/login_page.dart';
+import 'package:firebase_chatting_app/pages/user_profile_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -13,12 +17,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
 
 
+
         primarySwatch: Colors.blue,
       ),
+      initialRoute: LoginPage.routeName,
+      routes: {
+        LauncherPage.routeName: (_) => LauncherPage(),
+        LoginPage.routeName: (_) => LoginPage(),
+        UserProfilePage.routeName: (_) => UserProfilePage(),
+        ChatRoomPage.routeName: (_) => ChatRoomPage(),
+      },
+
     );
   }
 }

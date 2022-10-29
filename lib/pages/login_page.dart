@@ -1,4 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_chatting_app/pages/user_profile_page.dart';
 import 'package:flutter/material.dart';
+
+import '../auth/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -12,8 +16,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passController = TextEditingController();
-  bool isLogin = true,
-      isObscureText = true;
+  bool isLogin = true, isObscureText = true;
   final formKey = GlobalKey<FormState>();
   String errMsg = '';
 
@@ -58,13 +61,12 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: 'Password',
                   prefixIcon: Icon(Icons.lock),
                   suffixIcon: IconButton(
-                    icon: Icon(
-                        isObscureText ? Icons.visibility_off : Icons
-                            .visibility),
-                    onPressed: () =>
-                        setState(() {
-                          isObscureText = !isObscureText;
-                        }),
+                    icon: Icon(isObscureText
+                        ? Icons.visibility_off
+                        : Icons.visibility),
+                    onPressed: () => setState(() {
+                      isObscureText = !isObscureText;
+                    }),
                   ),
                   filled: true,
                 ),
@@ -103,28 +105,43 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const Text('Forgot Password?'),
                   TextButton(
-                    onPressed: () {
-
-                    },
+                    onPressed: () {},
                     child: const Text('Click Here'),
                   )
                 ],
               ),
-              const SizedBox(height: 10,),
-              Text(errMsg, style: TextStyle(color: Theme
-                  .of(context)
-                  .errorColor),)
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                errMsg,
+                style: TextStyle(color: Theme.of(context).errorColor),
+              )
             ],
           ),
         ),
       ),
     );
   }
-  authenticate() async {
-    if(formKey.currentState!.validate()){
 
+  authenticate() async {
+    if (formKey.currentState!.validate()) {
+      bool status;
+      try {
+        if (isLogin) {
+          status = await AuthService.login(
+              emailController.text, passController.text);
+        } else  {
+          status = await AuthService.register(
+              emailController.text, passController.text);
+        }
+        if(status){
+          if(!mounted) return;
+          Navigator.pushReplacementNamed(context, UserProfilePage.routeName);
+        }
+      } on FirebaseAuthException catch (e) {
+        errMsg = e.message!;
+      }
     }
   }
-
-
 }
