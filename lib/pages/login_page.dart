@@ -12,7 +12,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passController = TextEditingController();
-  bool isLogin = true, isObscureText = true;
+  bool isLogin = true,
+      isObscureText = true;
   final formKey = GlobalKey<FormState>();
   String errMsg = '';
 
@@ -40,13 +41,90 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: 'Email Address',
                     prefixIcon: Icon(Icons.email),
                     filled: true),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'This field must not be empty';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextFormField(
+                obscureText: isObscureText,
+                controller: passController,
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  prefixIcon: Icon(Icons.lock),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                        isObscureText ? Icons.visibility_off : Icons
+                            .visibility),
+                    onPressed: () =>
+                        setState(() {
+                          isObscureText = !isObscureText;
+                        }),
+                  ),
+                  filled: true,
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'This field must not be empty';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  isLogin = true;
+                  authenticate();
+                },
+                child: const Text('LOGIN'),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('New User?'),
+                  TextButton(
+                    onPressed: () {
+                      isLogin = false;
+                      authenticate();
+                    },
+                    child: const Text('Register Here'),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Forgot Password?'),
+                  TextButton(
+                    onPressed: () {
 
-
-              )
+                    },
+                    child: const Text('Click Here'),
+                  )
+                ],
+              ),
+              const SizedBox(height: 10,),
+              Text(errMsg, style: TextStyle(color: Theme
+                  .of(context)
+                  .errorColor),)
             ],
           ),
         ),
       ),
     );
   }
+  authenticate() async {
+    if(formKey.currentState!.validate()){
+
+    }
+  }
+
+
 }
