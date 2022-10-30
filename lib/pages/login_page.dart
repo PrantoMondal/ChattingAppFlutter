@@ -111,11 +111,12 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 50,
               ),
               Text(
                 errMsg,
-                style: TextStyle(color: Theme.of(context).errorColor),
+                style: TextStyle(color: Theme.of(context).errorColor,),
+                textAlign: TextAlign.center,
               )
             ],
           ),
@@ -134,13 +135,17 @@ class _LoginPageState extends State<LoginPage> {
         } else  {
           status = await AuthService.register(
               emailController.text, passController.text);
+          await AuthService.sendVerificationMail();
         }
         if(status){
           if(!mounted) return;
           Navigator.pushReplacementNamed(context, UserProfilePage.routeName);
         }
       } on FirebaseAuthException catch (e) {
-        errMsg = e.message!;
+        setState((){
+          errMsg = e.message!;
+        });
+
       }
     }
   }
