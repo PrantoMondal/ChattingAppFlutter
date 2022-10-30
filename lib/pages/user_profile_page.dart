@@ -1,3 +1,4 @@
+import 'package:firebase_chatting_app/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
 
 class UserProfilePage extends StatefulWidget {
@@ -12,6 +13,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const MainDrawer(),
       appBar: AppBar(
         title: const Text('My Profile'),
       ),
