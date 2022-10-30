@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_chatting_app/models/user_model.dart';
 import 'package:firebase_chatting_app/pages/user_profile_page.dart';
 import 'package:flutter/material.dart';
 
@@ -136,6 +137,10 @@ class _LoginPageState extends State<LoginPage> {
           status = await AuthService.register(
               emailController.text, passController.text);
           await AuthService.sendVerificationMail();
+          final userModel = UserModel(
+            uId: AuthService.user!.uid,
+            email: AuthService.user!.email
+          );
         }
         if(status){
           if(!mounted) return;
