@@ -2,8 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_chatting_app/models/user_model.dart';
 import 'package:firebase_chatting_app/pages/user_profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../auth/auth_service.dart';
+import '../providers/user_provider.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -141,6 +143,10 @@ class _LoginPageState extends State<LoginPage> {
             uId: AuthService.user!.uid,
             email: AuthService.user!.email
           );
+          if(mounted) {
+            await Provider.of<UserProvider>(context, listen: false).addUser(userModel);
+          }
+
         }
         if(status){
           if(!mounted) return;
