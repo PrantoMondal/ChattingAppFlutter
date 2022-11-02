@@ -56,14 +56,21 @@ class _UserProfilePageState extends State<UserProfilePage> {
                       height: 1,
                     ),
                     ListTile(
-                      title: Text(userModel.name == null ? 'No Display Name' : userModel.name!),
+                      title: Text(userModel.name?? 'No Display Name'),
                       trailing: IconButton(
                         icon: Icon(Icons.edit),
                         onPressed: (){},
                       ),
                     ),
                     ListTile(
-                      title: Text(userModel.mobile == null ? 'No Mobile Number' : userModel.mobile!),
+                      title: Text(userModel.mobile?? 'No Mobile Number'),
+                      trailing: IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: (){},
+                      ),
+                    ),
+                    ListTile(
+                      title: Text(userModel.email ?? 'No Email Address'),
                       trailing: IconButton(
                         icon: Icon(Icons.edit),
                         onPressed: (){},
