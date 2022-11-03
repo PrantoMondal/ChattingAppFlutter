@@ -4,6 +4,7 @@ import 'package:firebase_chatting_app/models/user_model.dart';
 import 'package:firebase_chatting_app/providers/user_provider.dart';
 import 'package:firebase_chatting_app/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class UserProfilePage extends StatefulWidget {
@@ -36,7 +37,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     Center(
                         child: userModel.image == null
                             ? Image.asset(
-                                'images/image.jpg',
+                                'images/person.jpg',
                                 height: 100,
                                 width: 100,
                                 fit: BoxFit.cover,
@@ -92,6 +93,10 @@ class _UserProfilePageState extends State<UserProfilePage> {
     );
   }
 
-  void _updateImage() {
+  void _updateImage() async {
+    final xFile = await ImagePicker().pickImage(source: ImageSource.gallery,imageQuality: 75);
+    if(xFile!= null){
+      Ink.image(image: xFile);
+    }
   }
 }
