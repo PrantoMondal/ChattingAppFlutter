@@ -15,4 +15,9 @@ class DBHelper {
   static Stream<DocumentSnapshot<Map<String, dynamic>>> getUserById(
           String uID) =>
       _db.collection(collectionUser).doc(uID).snapshots();
+
+  static Future<void> updateProfile(String uId, Map<String, dynamic>map){
+    return _db.collection(collectionUser).doc(uId).update(map);
+  }
+
 }

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+
 class UserProfilePage extends StatefulWidget {
   static const String routeName = '/userprofile';
 
@@ -57,27 +58,26 @@ class _UserProfilePageState extends State<UserProfilePage> {
                       height: 1,
                     ),
                     ListTile(
-                      title: Text(userModel.name?? 'No Display Name'),
+                      title: Text(userModel.name ?? 'No Display Name'),
                       trailing: IconButton(
                         icon: Icon(Icons.edit),
-                        onPressed: (){},
+                        onPressed: () {},
                       ),
                     ),
                     ListTile(
-                      title: Text(userModel.mobile?? 'No Mobile Number'),
+                      title: Text(userModel.mobile ?? 'No Mobile Number'),
                       trailing: IconButton(
                         icon: Icon(Icons.edit),
-                        onPressed: (){},
+                        onPressed: () {},
                       ),
                     ),
                     ListTile(
                       title: Text(userModel.email ?? 'No Email Address'),
                       trailing: IconButton(
                         icon: Icon(Icons.edit),
-                        onPressed: (){},
+                        onPressed: () {},
                       ),
                     )
-
                   ],
                 );
               }
@@ -94,9 +94,20 @@ class _UserProfilePageState extends State<UserProfilePage> {
   }
 
   void _updateImage() async {
-    final xFile = await ImagePicker().pickImage(source: ImageSource.gallery,imageQuality: 75);
-    if(xFile!= null){
-      Ink.image(image: xFile);
+    final xFile = await ImagePicker()
+        .pickImage(source: ImageSource.gallery, imageQuality: 75);
+    if (xFile != null) {
+      try {
+        final downloadUrl =
+            await Provider.of<UserProvider>(context, listen: false)
+                .updateImage(xFile);
+        await Provider.of<UserProvider>(context, listen: false)
+                .updateProfile(AuthService.user!.uid,
+          {'image' : downloadUrl}
+        );
+      } catch (e) {
+        rethrow;
+      }
     }
   }
 }

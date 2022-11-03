@@ -36,10 +36,5 @@ class AuthService {
       codeAutoRetrievalTimeout: (String verificationId) {},
     );
   }
-//  static updateAddress()
-//   static update(String name) =>
-//       _auth.currentUser!.updateDisplayName(name);
-//
-//   static updateDisplayName(String name) =>
-//       _auth.currentUser!.updateDisplayName(name);
+
 }

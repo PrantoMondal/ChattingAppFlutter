@@ -15,6 +15,8 @@ class UserProvider extends ChangeNotifier {
   Stream<DocumentSnapshot<Map<String, dynamic>>> getUserById(String uID) =>
       DBHelper.getUserById(uID);
 
+  Future<void> updateProfile(String uId, Map<String, dynamic>map) => DBHelper.updateProfile(uId, map);
+
 
   // Photo download url method
   Future <String> updateImage(XFile xFile) async {
