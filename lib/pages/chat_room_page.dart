@@ -10,6 +10,12 @@ class ChatRoomPage extends StatefulWidget {
 }
 
 class _ChatRoomPageState extends State<ChatRoomPage> {
+  final msgController = TextEditingController();
+  @override
+  void dispose() {
+    msgController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +28,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
             children: [
               Expanded(
                 child: TextField(
+                  controller: msgController,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16.0),
@@ -29,7 +36,9 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  msgController.clear();
+                },
                 icon: const Icon(Icons.send),
                 color: Theme.of(context).primaryColor,
               )
