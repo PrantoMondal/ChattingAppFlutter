@@ -29,7 +29,8 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
               child: ListView.builder(
                   itemCount: provider.msgList.length,
                   itemBuilder: (context,index){
-                    final msg =
+                    final msg = provider.msgList[index];
+                    return
                   }),
             ),
             Row(

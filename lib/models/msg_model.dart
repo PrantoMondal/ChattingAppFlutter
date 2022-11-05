@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class MessageModel {
   int? msgId;
   String? userUid;
+  String? userName;
+  String? userImage;
   String msg;
   Timestamp timestamp;
   String? image;
@@ -10,6 +12,8 @@ class MessageModel {
   MessageModel(
       {this.msgId,
       this.userUid,
+      this.userName,
+      this.userImage,
       required this.msg,
       required this.timestamp,
       this.image});
@@ -18,6 +22,8 @@ class MessageModel {
     return <String, dynamic>{
       'msgId': msgId,
       'userUid': userUid,
+      'userName': userName,
+      'userImage': userImage,
       'msg': msg,
       'timestamp': timestamp,
       'image': image
@@ -27,6 +33,8 @@ class MessageModel {
   factory MessageModel.fromMap(Map<String, dynamic> map) => MessageModel(
       msgId: map['msgId'],
       userUid: map['userUid'],
+      userName: map['userName'],
+      userImage: map['userImage'],
       msg: map['msg'],
       timestamp: map['timestamp'],
       image: map['image']);
