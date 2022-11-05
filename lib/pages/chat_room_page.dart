@@ -1,4 +1,6 @@
+import 'package:firebase_chatting_app/providers/chat_room_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ChatRoomPage extends StatefulWidget {
   static const String routeName = '/chatroom';
@@ -19,32 +21,40 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView(),
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: msgController,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16.0),
-                  )),
+      body: Consumer<ChatRoomProvider>(
+
+        builder:(context,provider, _)=> Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                  itemCount: provider.msgList.length,
+                  itemBuilder: (context,index){
+                    final msg =
+                  }),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: msgController,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                    )),
+                  ),
                 ),
-              ),
-              IconButton(
-                onPressed: () {
-                  msgController.clear();
-                },
-                icon: const Icon(Icons.send),
-                color: Theme.of(context).primaryColor,
-              )
-            ],
-          )
-        ],
+                IconButton(
+                  onPressed: () {
+                    provider.addMsg(msgController.text);
+                    msgController.clear();
+                  },
+                  icon: const Icon(Icons.send),
+                  color: Theme.of(context).primaryColor,
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
