@@ -25,6 +25,9 @@ class AuthService {
   static updateDisplayName(String name) =>
       _auth.currentUser!.updateDisplayName(name);
 
+  static Future<void> updateDisplayImage(String image)=>
+  _auth.currentUser!.updatePhotoURL(image);
+
   static updatePhoneNumber(String phone) async {
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: phone,

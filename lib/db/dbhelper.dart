@@ -25,6 +25,10 @@ class DBHelper {
           String uID) =>
       _db.collection(collectionUser).doc(uID).snapshots();
 
+  // static Future<DocumentSnapshot<Map<String, dynamic>>> getUserByUidFuture(
+  //     String uID) =>
+  //     _db.collection(collectionUser).doc(uID).get();
+
   static Stream<QuerySnapshot<Map<String, dynamic>>> getAllChatRoomMessages() =>
       _db.collection(collectionRoomMessage).snapshots();
 
