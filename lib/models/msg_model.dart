@@ -5,6 +5,7 @@ class MessageModel {
   String? userUid;
   String? userName;
   String? userImage;
+  String email;
   String msg;
   Timestamp timestamp;
   String? image;
@@ -14,6 +15,7 @@ class MessageModel {
       this.userUid,
       this.userName,
       this.userImage,
+      required this.email,
       required this.msg,
       required this.timestamp,
       this.image});
@@ -24,6 +26,7 @@ class MessageModel {
       'userUid': userUid,
       'userName': userName,
       'userImage': userImage,
+      'email': email,
       'msg': msg,
       'timestamp': timestamp,
       'image': image
@@ -35,6 +38,7 @@ class MessageModel {
       userUid: map['userUid'],
       userName: map['userName'],
       userImage: map['userImage'],
+      email: map['email'],
       msg: map['msg'],
       timestamp: map['timestamp'],
       image: map['image']);

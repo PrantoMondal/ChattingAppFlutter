@@ -1,4 +1,5 @@
 import 'package:firebase_chatting_app/providers/chat_room_provider.dart';
+import 'package:firebase_chatting_app/widgets/message_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +31,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                   itemCount: provider.msgList.length,
                   itemBuilder: (context,index){
                     final msg = provider.msgList[index];
-                    return
+                    return MessageItem(messageModel: msg);
                   }),
             ),
             Row(

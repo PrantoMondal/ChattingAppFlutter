@@ -12,10 +12,14 @@ class MessageItem extends StatelessWidget {
         padding: const EdgeInsets.all(4.0),
         child: Card(
           child: Column(
-            children:
-            [ListTile(
-              title: Text(),
-            )
+            children: [
+              ListTile(
+                title: Text(messageModel.userName ?? messageModel.email),
+                subtitle: Text(messageModel.timestamp.toString()),
+              ),
+              Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(messageModel.msg)),
             ],
           ),
         ));

@@ -66,7 +66,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         ListTile(
                           title: Text(userModel.name ?? 'No Display Name'),
                           trailing: IconButton(
-                            icon: Icon(Icons.edit),
+                            icon: const Icon(Icons.edit),
                             onPressed: () {
                               showInputDialog('Display Name', userModel.name, (value) async {
                                 await provider.updateProfile(AuthService.user!.uid,
@@ -79,7 +79,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         ListTile(
                           title: Text(userModel.mobile ?? 'No Mobile Number'),
                           trailing: IconButton(
-                            icon: Icon(Icons.edit),
+                            icon: const Icon(Icons.edit),
                             onPressed: () {
                               showInputDialog('Mobile Number', userModel.mobile, (value) {
                                 provider.updateProfile(AuthService.user!.uid,
@@ -91,7 +91,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         ListTile(
                           title: Text(userModel.email ?? 'No Email Address'),
                           trailing: IconButton(
-                            icon: Icon(Icons.edit),
+                            icon: const Icon(Icons.edit),
                             onPressed: () {
                               showInputDialog('Email', userModel.email, (value) {
                                 provider.updateProfile(AuthService.user!.uid,
