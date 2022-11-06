@@ -22,6 +22,7 @@ class MainDrawer extends StatelessWidget {
               Navigator.pushReplacementNamed(context, ChatRoomPage.routeName);
             },
             leading: const Icon(Icons.chat),
+            title: const Text('Chat Room'),
           ),
 
           ListTile(

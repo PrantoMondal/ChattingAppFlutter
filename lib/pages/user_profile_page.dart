@@ -40,7 +40,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                   if (snapshot.hasData) {
                     final userModel = UserModel.fromMap(snapshot.data!.data()!);
                     return ListView(
-                      children: [
+                    children: [
                         Center(
                             child: userModel.image == null
                                 ? Image.asset(

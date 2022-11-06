@@ -14,22 +14,36 @@ class ChatRoomPage extends StatefulWidget {
 
 class _ChatRoomPageState extends State<ChatRoomPage> {
   final msgController = TextEditingController();
+
+  @override
+  void didChangeDependencies() {
+    bool isInit = true;
+    if (isInit) {
+      Provider.of<ChatRoomProvider>(context, listen: false)
+          .getAllChatRoomMessages();
+      isInit = false;
+    }
+    super.didChangeDependencies();
+  }
+
   @override
   void dispose() {
     msgController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<ChatRoomProvider>(
 
-        builder:(context,provider, _)=> Column(
+      body: Consumer<ChatRoomProvider>(
+        builder: (context, provider, _) => Column(
           children: [
             Expanded(
               child: ListView.builder(
+                reverse: true,
                   itemCount: provider.msgList.length,
-                  itemBuilder: (context,index){
+                  itemBuilder: (context, index) {
                     final msg = provider.msgList[index];
                     return MessageItem(messageModel: msg);
                   }),
