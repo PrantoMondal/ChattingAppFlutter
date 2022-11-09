@@ -12,8 +12,8 @@ class UserProvider extends ChangeNotifier {
 
   Future<void> addUser(UserModel userModel) => DBHelper.addUser(userModel);
 
-  Stream<DocumentSnapshot<Map<String, dynamic>>> getUserById(String uID) =>
-      DBHelper.getUserById(uID);
+  Stream<DocumentSnapshot<Map<String, dynamic>>> getUserByUid(String uid) =>
+      DBHelper.getUserByUid(uid);
 
   Future<void> updateProfile(String uId, Map<String, dynamic>map) => DBHelper.updateProfile(uId, map);
 

@@ -14,10 +14,9 @@ class ChatRoomPage extends StatefulWidget {
 
 class _ChatRoomPageState extends State<ChatRoomPage> {
   final msgController = TextEditingController();
-
+  bool isInit = true;
   @override
   void didChangeDependencies() {
-    bool isInit = true;
     if (isInit) {
       Provider.of<ChatRoomProvider>(context, listen: false)
           .getAllChatRoomMessages();
@@ -35,7 +34,9 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar(
+        title: const Text('Chat Room'),
+      ),
       body: Consumer<ChatRoomProvider>(
         builder: (context, provider, _) => Column(
           children: [

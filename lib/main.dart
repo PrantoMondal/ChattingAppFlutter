@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: LoginPage.routeName,
+      initialRoute: LauncherPage.routeName,
       routes: {
         LauncherPage.routeName: (_) => LauncherPage(),
         LoginPage.routeName: (_) => LoginPage(),

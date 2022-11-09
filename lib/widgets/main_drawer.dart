@@ -15,7 +15,6 @@ class MainDrawer extends StatelessWidget {
           Container(
             height: 200,
             color: Colors.blue,
-            child:  Image.asset('images/person.jpg')
           ),
           ListTile(
             onTap: (){

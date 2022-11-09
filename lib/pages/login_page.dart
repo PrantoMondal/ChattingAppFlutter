@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
               emailController.text, passController.text);
           await AuthService.sendVerificationMail();
           final userModel = UserModel(
-            uId: AuthService.user!.uid,
+            uid: AuthService.user!.uid,
             email: AuthService.user!.email
           );
           if(mounted) {

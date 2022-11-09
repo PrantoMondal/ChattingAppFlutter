@@ -28,12 +28,10 @@ class AuthService {
   static Future<void> updateDisplayImage(String image)=>
   _auth.currentUser!.updatePhotoURL(image);
 
-  static updatePhoneNumber(String phone) async {
+  static Future<void> updatePhoneNumber(String phone) async {
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: phone,
-      verificationCompleted: (PhoneAuthCredential credential) {
-        _auth.currentUser!.updatePhoneNumber(credential);
-      },
+      verificationCompleted: (PhoneAuthCredential credential) {},
       verificationFailed: (FirebaseAuthException e) {},
       codeSent: (String verificationId, int? resendToken) {},
       codeAutoRetrievalTimeout: (String verificationId) {},

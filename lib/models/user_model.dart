@@ -1,16 +1,14 @@
-//reg er somoy userModel class er object create korbo
-
 class UserModel {
-  String? uId;
+  String? uid;
   String? name;
   String? email;
   String? mobile;
   String? image;
-  bool available = true;
+  bool available;
   String? deviceToken;
 
   UserModel(
-      {this.uId,
+      {this.uid,
       this.name,
       this.email,
       this.mobile,
@@ -20,24 +18,23 @@ class UserModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'uId': uId,
+      'uid': uid,
       'name': name,
-      'email': email,
       'mobile': mobile,
+      'email': email,
       'image': image,
       'deviceToken': deviceToken,
-      'available': available
+      'available': available,
     };
   }
+
   factory UserModel.fromMap(Map<String, dynamic> map) => UserModel(
-      uId : map['uId'],
-      name : map['name'],
-      email : map['email'],
-      mobile : map['mobile'],
-      image : map['image'],
-      deviceToken : map['deviceToken'],
-      available : map['available']
+        uid: map['uid'],
+        name: map['name'],
+        mobile: map['mobile'],
+        email: map['email'],
+        image: map['image'],
+        deviceToken: map['deviceToken'],
+        available: map['available'],
       );
-
-
 }
